@@ -1,31 +1,33 @@
 {
-   "background": {
-      "scripts": [ "js/background.js",  "js/lib/jquery-1.8.2.min.js"]
-   },
-   "content_scripts": [ {
-      "js": [ "js/lib/jquery-1.8.2.min.js", "js/contentScript.js" ],
-      "matches": [ "http://*/*", "https://*/*" ]
-   } ],
-   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com/ https://apis.google.com https://cdn.extensionanalytics.com; object-src 'self'",
-   "description": "Block Ads on Facebook",
+   "name": "Facebook Cleaner Timeline",
+   "manifest_version": 2,
+   "offline_enabled": true,
+   "version": "1.1",
+
+
+   "content_security_policy": "script-src 'self' https://apis.google.com; object-src 'self'",
+   "description": "Makes your facebook timeline cleaner. Block Ads on Facebook",
    "icons": {
       "128": "img/icon128.png",
       "16": "img/icon.png",
       "48": "img/icon48.png"
    },
-   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDUlHp6jSiQGKAUhwY/ak2f1q5Q70LbDDpUSIzMnferEFA2Yvy3WSe0s8J6YC2KfjNg+9L4pJtF5pHJgd1E8UwUPc8vFmtg2ILun8DPFCzUgIjkr6A3EnrYgT9l3dptMpvuPSf9wUTNa3q+lfzkd6sKc5l3Jnx4janH+YVoPjkMfQIDAQAB",
-   "manifest_version": 2,
-   "name": "Facebook AdBlock",
-   "offline_enabled": true,
-   "page_action": {
-      "default_icon": {
-         "19": "img/icon19.png",
-         "38": "img/icon38.png"
-      },
-      "default_popup": "popup.html",
-      "default_title": "Facebook AdBlock"
-   },
-   "permissions": [ "tabs", "notifications", "webRequest", "*://*/*", "contextMenus", "webNavigation", "webRequestBlocking" ],
-   "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "1.0.12"
+
+   "content_scripts": [ {
+      "js": [ "js/lib/jquery-1.8.2.min.js", "js/contentScript.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   } ],
+
+  
+  "browser_action": {
+    "default_icon": "img/icon128.png",
+    "default_title": "Facebook Cleaner Timeline",
+    "default_popup": "popup.html"
+  },
+
+   "permissions": [
+      "http://*/"
+  ],
+   "update_url": "https://clients2.google.com/service/update2/crx"
 }
